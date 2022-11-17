@@ -19,7 +19,7 @@ jobs:
         uses: Yikun/hub-mirror-action@master
         if: env.dst_key && env.dst_token && env.gitee_user
         with:
-          src: 'github/iotqu'
-          dst: 'gitee/iotqu'
+          src: 'github/iotqu/learn_base'
+          dst: 'gitee/iotqu/learn_base'
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token:  ${{ secrets.GITEE_TOKEN }}
