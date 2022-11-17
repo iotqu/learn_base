@@ -16,7 +16,7 @@ jobs:
           persist-credentials: true
 
       - name: 仓库同步到 gitee
-        uses: ad-m/github-push-action@master
+        uses: Yikun/hub-mirror-action@master
         if: env.dst_key && env.dst_token && env.gitee_user
         with:
           src: 'github/iotqu'
