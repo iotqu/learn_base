@@ -9,7 +9,7 @@ jobs:
       dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
       dst_token: ${{ secrets.GITEE_TOKEN }}
       gitee_user: Mr.Qu
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
         with:
