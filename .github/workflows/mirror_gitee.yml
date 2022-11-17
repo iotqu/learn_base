@@ -23,5 +23,5 @@ jobs:
           dst: 'gitee/iotqu'
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token:  ${{ secrets.GITEE_TOKEN }}
-          static_list: 'learn_base'
           account_type: org
+          static_list: 'learn_base'
