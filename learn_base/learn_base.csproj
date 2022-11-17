@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Platforms>AnyCPU;x86</Platforms>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="EasyModbusTCP.NETCore" Version="1.0.0" />
+      <PackageReference Include="log4net" Version="2.0.15" />
+      <PackageReference Include="M2Mqtt" Version="4.3.0" />
+      <PackageReference Include="MiniExcel" Version="1.26.6" />
+      <PackageReference Include="MQTTnet" Version="4.1.0.247" />
+      <PackageReference Include="NLua" Version="1.6.0" />
+      <PackageReference Include="SqlSugarCore" Version="5.1.2.6" />
+      <PackageReference Include="System.Data.SQLite" Version="1.0.116" />
+      <PackageReference Include="xktComm" Version="7.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Update="log4net.config">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Update="log4net.config">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="common\core" />
+      <Folder Include="core\lua" />
+    </ItemGroup>
+
+</Project>
