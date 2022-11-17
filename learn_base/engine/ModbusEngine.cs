@@ -34,7 +34,7 @@ public class ModbusEngine : IEngine
         client.Connect();
     }
 
-    public int[] ReadRegisters(ushort regStartAddr, ushort regEndAddr)
+    public IEnumerable<int> ReadRegisters(ushort regStartAddr, ushort regEndAddr)
     {
         var length = (ushort)(regEndAddr - regStartAddr + 1);
         return client.ReadHoldingRegisters(regStartAddr, length);
