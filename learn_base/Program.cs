@@ -160,7 +160,7 @@ DbTest.Update();
 // Modbus功能
 var engine = new ModbusEngine();
 engine.Start();
-//engine.WriteRegister(0, 99);
+engine.WriteRegister(0, 99);
 while (true)
 {
     var data = engine.ReadRegisters(0, 9);
