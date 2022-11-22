@@ -91,7 +91,7 @@ DbTest.Update();
 // Console.WriteLine(mqttCon.password);
 // Json.Convert(mqttCon);
 // Console.WriteLine(mqttCon.password);
-
+log.Info("start ===");
 //  lua功能
 // Console.WriteLine(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fff"));
 // var luaSource = "";
