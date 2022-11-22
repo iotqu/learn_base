@@ -17,6 +17,6 @@ public class DbTest
             DataModels = "aaaa"
         };
         var result = InEndMapper.UpdateOutEnd(inEnd);
-        Assert.AreEqual(false, result);
+        Assert.AreEqual(true, result);
     }
 }
