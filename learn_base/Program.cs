@@ -12,6 +12,7 @@ using learn_base.test;
 using learn_base.util;
 using log4net;
 
+log4net.Config.XmlConfigurator.Configure(new FileInfo("log4net.config"));
 var log = LogManager.GetLogger(MethodBase.GetCurrentMethod()?.DeclaringType);
 //  结构体功能
 // var bookStruct = TestStruct.Init(100,"Mr.Qu");
@@ -94,9 +95,21 @@ DbTest.Update();
 //  lua功能
 // Console.WriteLine(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fff"));
 // var luaSource = "";
-// var lua = Lua.InitLua();
-// lua["sysLib"] = new DataToTargetLib();
-// lua.DoFile("data_to_mqtt.lua");
+var lua = Lua.InitLua();
+Lua.AddLib("sysLib", new DataToTargetLib());
+//lua["sysLib"] = new DataToTargetLib();
+lua.DoString("log.trace('trace file print ---')");
+lua.DoString("log.debug('debug file print ---')");
+lua.DoString("log.info('info  file print ---')");
+lua.DoString("log.warn('warn  file print ---')");
+lua.DoString("log.error('error file print ---')");
+lua.DoString("log.fatal('fatal file print ---')");
+
+// lua.LoadCLRPackage();
+// lua.DoString(@"import ('learn_base', 'learn_base.sysLib')");
+// lua.DoString(@"timeLib = TimeLib()");
+// lua.DoString(@"print(timeLib:Now())");
+lua.DoFile(@"script\data_to_test.lua");
 //lua.DoString(luaSource);
 // //var doFile = lua.DoFile("data_to_mqtt.lua");
 // //  静态方法一个一个注册，然后使用
@@ -158,17 +171,18 @@ DbTest.Update();
 
 
 // Modbus功能
-var engine = new ModbusEngine();
-engine.Start();
-engine.WriteRegister(0, 99);
-while (true)
-{
-    var data = engine.ReadRegisters(0, 9);
-    foreach (var it in data)
-    {
-        Console.Write(it + " ");
-    }
-
-    Console.WriteLine();
-    Thread.Sleep(5000);
-}
+// var engine = new ModbusEngine();
+// engine.Start();
+// engine.WriteRegister(0, 99);
+// while (true)
+// {
+//     var data = engine.ReadRegisters(0, 9);
+//     foreach (var it in data)
+//     {
+//         log.Error(it + " ");
+//         Console.Write(it + " ");
+//     }
+//
+//     Console.WriteLine();
+//     Thread.Sleep(5000);
+// }

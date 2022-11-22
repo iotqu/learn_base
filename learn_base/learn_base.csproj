@@ -12,8 +12,11 @@
       <PackageReference Include="EasyModbusTCP.NETCore" Version="1.0.0" />
       <PackageReference Include="log4net" Version="2.0.15" />
       <PackageReference Include="M2Mqtt" Version="4.3.0" />
+      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
       <PackageReference Include="MiniExcel" Version="1.26.6" />
       <PackageReference Include="MQTTnet" Version="4.1.0.247" />
+      <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
+      <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
       <PackageReference Include="NLua" Version="1.6.0" />
       <PackageReference Include="SqlSugarCore" Version="5.1.2.6" />
       <PackageReference Include="System.Data.SQLite" Version="1.0.116" />
@@ -25,6 +28,15 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <None Update="log4net.config">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="script\log.lua">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="script\data_to_test.lua">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="script\json.lua">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

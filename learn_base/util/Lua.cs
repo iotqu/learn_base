@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Text;
+using learn_base.sysLib;
 using NLua;
 
 namespace learn_base.util;
@@ -12,12 +13,21 @@ public class Lua
     public static NLua.Lua InitLua()
     {
         lua.State.Encoding = Encoding.Default;
+        lua.DoString(@"json = require('script/json')");
+        lua.DoString(@"log = require('script/log')");
+        AddLib("log.outfile","lua_log");
+        //lua["log.outfile"] = "lua_log";
         return lua;
     }
 
     public static void AddLib(string funcName, MethodBase? func)
     {
         lua.RegisterFunction(funcName, null, func);
+    }
+
+    public static void AddLib(string k, object func)
+    {
+        lua[k] = func;
     }
 
     public static object[] InvokeFunc(string funcName, string id, string data)

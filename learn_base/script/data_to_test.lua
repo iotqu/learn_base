@@ -1,14 +1,9 @@
----@diagnostic disable: undefined-global
-JSON = require('json')
-print("======== begin ======")
-msg = sysLib:Split("1,2,3,4,5,6,7,8,9,10,11")
-
-print(msg)
-if #msg ~= 11 then
+msg = sysLib:Split("1,2,3,4,5,6,7,8,9,10", ",")
+if sysLib:Len(msg) ~= 11 then
+    log.error("======== begin ======")
     return true
 end
-local temp =
-{
+local temp = {
     ver = "v1.0.0",
     data = {
         id = "msg[0]",
@@ -25,9 +20,8 @@ local temp =
         time = os.date("%Y-%m-%dT%H:%M:%S") .. ".000",
         dataType = 1,
     },
-    dt=os.date("%Y-%m-%dT%H:%M:%S") .. ".000"
+    dt = os.date("%Y-%m-%dT%H:%M:%S") .. ".000"
 }
-
-print("=============")
-print(JSON.encode(temp))
+sysLib:
+print(json.encode(temp))
 

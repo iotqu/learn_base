@@ -1,11 +1,14 @@
 using learn_base.mapper;
 using learn_base.model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace learn_base.test;
 
+[TestClass]
 public class DbTest
 {
-    public static void Update()
+    [TestMethod]
+    public void Update()
     {
         var inEnd = new InEnd
         {
@@ -14,6 +17,6 @@ public class DbTest
             DataModels = "aaaa"
         };
         var result = InEndMapper.UpdateOutEnd(inEnd);
-        Console.WriteLine("UpdateOutEnd result：" + result);
+        Assert.AreEqual(false, result);
     }
 }
