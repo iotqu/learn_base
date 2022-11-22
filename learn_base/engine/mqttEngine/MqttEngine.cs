@@ -13,7 +13,7 @@ public struct MqttEngine : IEngine
         Sn += "001";
     }
 
-    public void Init()
+    public void Init(string config)
     {
         Console.WriteLine("Mqtt init -> " + Sn);
     }

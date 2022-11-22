@@ -8,7 +8,7 @@ public class ModbusEngine : IEngine
 {
     private ModbusClient client;
 
-    public void Init()
+    public void Init(string config)
     {
         throw new NotImplementedException();
     }

@@ -8,7 +8,7 @@ public class HttpEngine : IEngine
     public MqttClient client;
     public int status;
 
-    public void Init()
+    public void Init(string config)
     {
         Console.WriteLine("Http init -> " + sn);
     }

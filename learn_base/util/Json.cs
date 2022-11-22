@@ -19,8 +19,8 @@ public class Json
         return Encoding.UTF8.GetString(ms.ToArray());
     }
 
-    public static void Convert(MqttCon con)
+    public static void Convert(MqttConfig config)
     {
-        con.password = "111111";
+        config.password = "111111";
     }
 }

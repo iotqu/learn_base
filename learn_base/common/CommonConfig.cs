@@ -1,15 +1,17 @@
 ﻿namespace learn_base.common;
 
-public struct CommonConfig
+/// <summary>
+/// 通用的含有主机:端口:用户名:密码的配置
+/// </summary>
+public struct HostConfig
 {
-    public string clientId;
-    public string server;
-    public int port;
-    public string username;
-    public string password;
+    public string Host;
+    public int Port;
+    public string Username;
+    public string Password;
 }
 
-public struct MqttCon
+public struct MqttConfig
 {
     public string clientId;
     public string server;

@@ -1,10 +1,18 @@
+using learn_base.common;
+using learn_base.util;
+using Renci.SshNet;
+
 namespace learn_base.engine;
 
-public class SshEngine:IEngine
+public class SshEngine : IEngine
 {
-    public void Init()
+    private string sn;
+    private SshClient client;
+    private HostConfig mainconfig;
+
+    public void Init(string config)
     {
-        throw new NotImplementedException();
+        mainconfig = Json.Parse<HostConfig>(config);
     }
 
     public void Start()
