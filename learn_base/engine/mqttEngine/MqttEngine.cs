@@ -22,4 +22,8 @@ public struct MqttEngine : IEngine
     {
         Console.WriteLine("Mqtt start -> " + Sn);
     }
+
+    public void Work(string data)
+    {
+    }
 }

@@ -20,8 +20,8 @@ public class ModbusEngine : IEngine
     {
         var tcp = new ModbusTcp();
         var rtu = new ModbusRtu();
-        var ppi = new SiemensPPI();// 串口协议
-        var s7 = new SiemensS7();// 网口协议
+        var ppi = new SiemensPPI(); // 串口协议
+        var s7 = new SiemensS7(); // 网口协议
 
         client = new ModbusClient("192.168.5.28", 502)
         {
@@ -32,6 +32,10 @@ public class ModbusEngine : IEngine
             StopBits = StopBits.One
         };
         client.Connect();
+    }
+
+    public void Work(string data)
+    {
     }
 
     public IEnumerable<int> ReadRegisters(ushort regStartAddr, ushort regEndAddr)

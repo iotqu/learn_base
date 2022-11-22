@@ -11,4 +11,10 @@ public interface IEngine
     /// 启动驱动
     /// </summary>
     void Start();
+
+    /// <summary>
+    /// 驱动核心工作
+    /// </summary>
+    /// <param name="data"></param>
+    void Work(string data);
 }

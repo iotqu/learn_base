@@ -5,6 +5,7 @@
 /// </summary>
 public struct HostConfig
 {
+    public string Sn;
     public string Host;
     public int Port;
     public string Username;

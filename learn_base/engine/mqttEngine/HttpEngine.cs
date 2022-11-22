@@ -17,4 +17,8 @@ public class HttpEngine : IEngine
     {
         Console.WriteLine("Http start -> " + sn);
     }
+
+    public void Work(string data)
+    {
+    }
 }
