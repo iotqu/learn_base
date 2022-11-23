@@ -2,13 +2,13 @@ namespace learn_base.sysLib;
 
 public class DataToTargetLib
 {
-    public static string DataToMqtt(string id, string data)
+    public string DataToMqtt(string id, string data)
     {
         Console.WriteLine("data to mqtt :" + data);
         return "DataToMqtt success";
     }
 
-    public static string DataToHttp(string id, string data)
+    public string DataToHttp(string id, string data)
     {
         Console.WriteLine("data to http :" + data);
         return "DataToHttp success";

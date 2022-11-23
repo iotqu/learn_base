@@ -1,6 +1,6 @@
-msg = sysLib:Split("1,2,3,4,5,6,7,8,9,10", ",")
+msg = sysLib:Split("1,2,3,4,5,6,7,8,9,10,11", ",")
 if sysLib:Len(msg) ~= 11 then
-    log.error("======== begin ======")
+    log.warn("data is invalid")
     return true
 end
 local temp = {
@@ -22,6 +22,6 @@ local temp = {
     },
     dt = os.date("%Y-%m-%dT%H:%M:%S") .. ".000"
 }
-sysLib:
-print(json.encode(temp))
+sysLib:DataToMqtt("OUT:110", json.encode(temp))
+log.info(json.encode(temp))
 

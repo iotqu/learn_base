@@ -12,6 +12,8 @@ using learn_base.test;
 using learn_base.util;
 using log4net;
 
+GlobalContext.Properties["InfoLogFilePath"] = "logs/info";
+GlobalContext.Properties["ErrorLogFilePath"] = "logs/error";
 log4net.Config.XmlConfigurator.Configure(new FileInfo("log4net.config"));
 var log = LogManager.GetLogger(MethodBase.GetCurrentMethod()?.DeclaringType);
 //  结构体功能

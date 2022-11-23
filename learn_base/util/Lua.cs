@@ -15,8 +15,7 @@ public class Lua
         lua.State.Encoding = Encoding.Default;
         lua.DoString(@"json = require('script/json')");
         lua.DoString(@"log = require('script/log')");
-        AddLib("log.outfile","./logs/lua_log");
-        //lua["log.outfile"] = "lua_log";
+        lua["log.outfile"] = "logs/lua";
         return lua;
     }
 
