@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using SqlSugar;
 
-namespace rulex.mapper
+namespace learn_base.mapper
 {
     public class BaseMapper<T> where T : class, new()
     {

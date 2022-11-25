@@ -1,5 +1,4 @@
 ﻿using learn_base.model;
-using rulex.mapper;
 
 namespace learn_base.mapper
 {

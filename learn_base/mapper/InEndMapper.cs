@@ -1,6 +1,4 @@
 ﻿using learn_base.model;
-using rulex.mapper;
-using SqlSugar;
 
 namespace learn_base.mapper
 {
