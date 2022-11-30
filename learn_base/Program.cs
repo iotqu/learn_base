@@ -62,20 +62,6 @@ foreach (var type in types)
 // var engine = (IEngine)Activator.CreateInstance(Type.GetType("learn_base.engine.mqttEngine.MqttEngine")!)!;
 // engine.Init();
 
-
-//  数据库功能
-// var queryable = DbUtil.db.Queryable<Rule>();
-// // queryable.Where(item => item.Type == "HTTP");
-// // queryable.Where(item => item.Id == 2);
-// List<Rule> datas = queryable.ToList();
-// int total = 0; //总数据
-// List<Inend> inends = DbUtil.db.Queryable<Inend>().ToPageList(1, 1, ref total);
-// Console.WriteLine(inends[0].Config);
-/*
-Console.WriteLine(Environment.CurrentDirectory + @"\rulex.db");
-DbTest.Update();
-*/
-
 //  文件功能
 //FileUtil.ReadFile(@"D:\data", "test.txt");
 //FileUtil.FileWatcher(@"G:\workspace\c#\rulex\rulex\bin\Debug\logs");

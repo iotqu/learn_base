@@ -1,6 +1,6 @@
 ﻿using SqlSugar;
 
-namespace learn_base;
+namespace learn_base.util;
 
 public class DbUtil
 {
