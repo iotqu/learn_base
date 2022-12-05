@@ -156,21 +156,3 @@ lua.DoFile(@"script\data_to_test.lua");
 // Console.WriteLine("操作系统位数：" + Environment.Is64BitOperatingSystem);
 // Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
 // Console.WriteLine(Environment.CurrentDirectory);
-
-
-// Modbus功能
-// var engine = new ModbusEngine();
-// engine.Start();
-// engine.WriteRegister(0, 99);
-// while (true)
-// {
-//     var data = engine.ReadRegisters(0, 9);
-//     foreach (var it in data)
-//     {
-//         log.Error(it + " ");
-//         Console.Write(it + " ");
-//     }
-//
-//     Console.WriteLine();
-//     Thread.Sleep(5000);
-// }
