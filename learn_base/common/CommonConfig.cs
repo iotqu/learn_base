@@ -14,11 +14,11 @@ public struct HostConfig
 
 public struct MqttConfig
 {
-    public string clientId;
-    public string server;
-    public int port;
-    public string username;
-    public string password;
+    public string ClientId;
+    public string Server;
+    public int Port;
+    public string Username;
+    public string Password;
 }
 
 public struct TextConfig

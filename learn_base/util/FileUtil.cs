@@ -15,9 +15,10 @@ public class FileUtil
 
     public static void ReadFile(string filePath, string fileName)
     {
-        var read = new StreamReader(@$"{filePath}\{fileName}",Encoding.GetEncoding(""));
+        var read = new StreamReader(@$"{filePath}\{fileName}",Encoding.UTF32);
         while (!read.EndOfStream)
         {
+            var readToEnd = read.ReadToEnd();
             var data = read.ReadLine();
             log.Info(data);
             Console.WriteLine(data);
@@ -39,6 +40,7 @@ public class FileUtil
     {
         var watcher = new FileSystemWatcher();
         watcher.Path = filePath;
+        watcher.Filter = "*.csv";
         watcher.NotifyFilter = NotifyFilters.FileName | NotifyFilters.Size | NotifyFilters.DirectoryName;
         watcher.IncludeSubdirectories = true; //监控指定路径中的子目录
         watcher.Created += fileWatcher_created;

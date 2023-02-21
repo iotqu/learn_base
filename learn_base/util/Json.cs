@@ -21,6 +21,6 @@ public class Json
 
     public static void Convert(MqttConfig config)
     {
-        config.password = "111111";
+        config.Password = "111111";
     }
 }
