@@ -34,4 +34,17 @@ public class RegexTest
         var flag = regex.IsMatch(str);
         Console.WriteLine(flag);
     }
+
+    // 正则匹配 x:[1,4]
+    public static void customTest3()
+    {
+        var str = "A2:[1,2];B:[4,5]";
+        var pattern = @"[a-zA-Z0-9]+:\[[0-9]+,[0-9]+]";
+        var regex = new Regex(pattern);
+        var flag = regex.IsMatch(str);
+        foreach (Match match in regex.Matches(str))
+        {
+            Console.WriteLine(match.Value);
+        }
+    }
 }
