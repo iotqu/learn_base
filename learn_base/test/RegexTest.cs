@@ -47,4 +47,18 @@ public class RegexTest
             Console.WriteLine(match.Value);
         }
     }
+
+    // 正则匹配 以字母开头的 长度为1~32 字母数字下划线组合
+    public static void customTest4()
+    {
+        var str = "ss__";
+        var pattern = "^[a-zA-Z]\\w{0,31}$";
+        var regex = new Regex(pattern);
+        var flag = regex.IsMatch(str);
+        Console.WriteLine(flag);
+        foreach (Match match in regex.Matches(str))
+        {
+            Console.WriteLine(match.Value);
+        }
+    }
 }
