@@ -12,11 +12,11 @@ public class SshEngine : IEngine
 
     private string _sn;
     private SshClient _client;
-    private HostConfig _config;
+    private TcpConfig _config;
 
     public void Init(string config)
     {
-        _config = Json.Parse<HostConfig>(config);
+        _config = Json.Parse<TcpConfig>(config);
         _sn = _config.Sn;
     }
 

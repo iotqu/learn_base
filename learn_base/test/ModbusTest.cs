@@ -11,7 +11,7 @@ public class ModbusTest
     {
         var engine = new ModbusEngine();
         engine.Start();
-        engine.WriteRegister(0, 99);
+        engine.WriteRegister(0, 66);
         while (true)
         {
             var data = engine.ReadRegisters(0, 9);

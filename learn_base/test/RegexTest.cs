@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Text.RegularExpressions;
 
 namespace learn_base.test;
@@ -60,5 +61,20 @@ public class RegexTest
         {
             Console.WriteLine(match.Value);
         }
+    }
+
+    public static readonly ConcurrentDictionary<string, string> AttrRelCache = new();
+
+    public static void main()
+    {
+        var list = new List<string> { "6" };
+        test(list);
+        Console.Write(list.Count);
+    }
+
+    public static void test(List<string> list)
+    {
+        list.Add("1");
+        list.Add("2");
     }
 }

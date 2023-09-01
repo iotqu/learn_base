@@ -1,16 +1,21 @@
+using System.Reflection;
+using log4net;
+
 namespace learn_base.sysLib;
 
 public class DataToTargetLib
 {
+    private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod()?.DeclaringType);
+
     public string DataToMqtt(string id, string data)
     {
-        Console.WriteLine("data to mqtt :" + data);
+        Log.Info($"data to mqtt [{id}]: {data}");
         return "DataToMqtt success";
     }
 
-    public string DataToHttp(string id, string data)
+    public static string DataToHttp(string id, string data)
     {
-        Console.WriteLine("data to http :" + data);
+        Log.Info($"data to http [{id}]: {data}");
         return "DataToHttp success";
     }
 

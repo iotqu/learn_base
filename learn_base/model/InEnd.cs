@@ -1,4 +1,5 @@
-﻿using SqlSugar;
+﻿using learn_base.common.validation;
+using SqlSugar;
 
 namespace learn_base.model;
 
@@ -10,6 +11,7 @@ public class InEnd
     public string Uuid { get; set; }
     public string Type { get; set; }
     public string Name { get; set; }
+    [JsonFormat("Type", ErrorMessage = "[Modbus配置]非法的JSON字符串")]
     public string Config { get; set; }
 
     [SugarColumn(ColumnName = "x_data_models")]

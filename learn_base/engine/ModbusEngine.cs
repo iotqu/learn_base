@@ -1,6 +1,5 @@
 using System.IO.Ports;
 using EasyModbus;
-using xktComm;
 
 namespace learn_base.engine;
 
@@ -18,19 +17,15 @@ public class ModbusEngine : IEngine
     /// </summary>
     public void Start()
     {
-        var tcp = new ModbusTcp();
-        var rtu = new ModbusRtu();
-        var ppi = new SiemensPPI(); // 串口协议
-        var s7 = new SiemensS7(); // 网口协议
-
-        client = new ModbusClient("192.168.5.28", 502)
+        client = new ModbusClient("192.168.5.12", 502);//Modbus Tcp方式
+        /*client = new ModbusClient("COM2") // Modbus Rtu
         {
             UnitIdentifier = 1,
             SerialPort = "COM2",
             Baudrate = 9600,
             Parity = Parity.Even,
-            StopBits = StopBits.One
-        };
+            StopBits = StopBits.One,
+        };*/
         client.Connect();
     }
 

@@ -1,5 +1,8 @@
 using System.Net;
+using System.Runtime.InteropServices;
+using System.Runtime.Loader;
 using System.Text;
+using learn_base.util;
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
 
@@ -15,17 +18,22 @@ public class MqttM2M
         string clientId = Guid.NewGuid().ToString();
         client.Connect(clientId);
 
-        client.Subscribe(new string[] { "com/data" },
+        client.Subscribe(new string[] { "com/iot/plugin" },
             new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE });
 
-        client.Publish("com/data",
-            Encoding.Default.GetBytes("qwesdfg") /*Message*/,
-            MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE /*QoS*/,
-            false);
+        //client.Publish("com/data", Encoding.Default.GetBytes("qwesdfg"), MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE, false);
     }
 
     public void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
     {
-        Console.WriteLine("======receive message > " + e.Topic + " : " + Encoding.UTF8.GetString(e.Message));
+        var msg = Encoding.UTF8.GetString(e.Message);
+        Console.WriteLine("======receive message > " + e.Topic + " : " + msg);
+        var obj = Json.Parse<dynamic>(msg);
+        var cmd = (string)obj.cmd;//插件操作
+        if (cmd == "load")
+        {
+            
+        }
+        var name = (string)obj.name;//插件名称
     }
 }

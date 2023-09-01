@@ -4,6 +4,7 @@ using System.Text;
 using learn_base.model;
 using log4net;
 using MiniExcelLibs;
+using static System.String;
 
 namespace learn_base.util;
 
@@ -15,14 +16,22 @@ public class FileUtil
 
     public static void ReadFile(string filePath, string fileName)
     {
-        var read = new StreamReader(@$"{filePath}\{fileName}",Encoding.UTF32);
+        var read = new StreamReader(@$"{filePath}\{fileName}", Encoding.UTF8);
         while (!read.EndOfStream)
         {
-            var readToEnd = read.ReadToEnd();
-            var data = read.ReadLine();
+            var data = read.ReadToEnd();
+            //var data = read.ReadLine();
             log.Info(data);
             Console.WriteLine(data);
         }
+    }
+
+    public static void ReadPdf(string path)
+    {
+        var bytes = File.ReadAllBytes(path);
+        Console.WriteLine(bytes.Length);
+        Console.WriteLine(Join(',', bytes));
+        File.WriteAllBytes("D:\\Data\\Test.pdf", bytes);
     }
 
     public static void ReadFile(string path)
@@ -34,13 +43,9 @@ public class FileUtil
         }
     }
 
-    //private FileSystemWatcher watcher;
-
-    public static void FileWatcher(string filePath)
+    public static void FileWatcher(string path, string filter)
     {
-        var watcher = new FileSystemWatcher();
-        watcher.Path = filePath;
-        watcher.Filter = "*.csv";
+        var watcher = new FileSystemWatcher(path, filter);
         watcher.NotifyFilter = NotifyFilters.FileName | NotifyFilters.Size | NotifyFilters.DirectoryName;
         watcher.IncludeSubdirectories = true; //监控指定路径中的子目录
         watcher.Created += fileWatcher_created;
@@ -54,15 +59,15 @@ public class FileUtil
     private static void fileWatcher_created(object sender, FileSystemEventArgs e)
     {
         //var read = new StreamReader(e.FullPath, Encoding.UTF8);
-        var fs = new FileStream(e.FullPath, FileMode.Open,FileAccess.Read,FileShare.ReadWrite);
-        _TEXT_CLIENTS[e.FullPath] = new StreamReader(fs, Encoding.UTF8);
-        log.Info("新增：" + e.ChangeType + " " + e.FullPath + " " + e.Name);
-        //Console.WriteLine("新增：" + e.ChangeType + " " + e.FullPath + " " + e.Name);
+        //var fs = new FileStream(e.FullPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+        //_TEXT_CLIENTS[e.FullPath] = new StreamReader(fs, Encoding.UTF8);
+        //log.Info("新增：" + e.ChangeType + " " + e.FullPath + " " + e.Name);
+        Console.WriteLine("新增：" + e.ChangeType + " " + e.FullPath + " " + e.Name);
     }
 
     private static void fileWatcher_changed(object sender, FileSystemEventArgs e)
     {
-        log.Info("修改：" + e.ChangeType + " " + e.FullPath + " " + e.Name);
+        //log.Info("修改：" + e.ChangeType + " " + e.FullPath + " " + e.Name);
 
         //var fs = new FileStream(e.FullPath, FileMode.Open,FileAccess.Read,FileShare.ReadWrite);
         var reader = _TEXT_CLIENTS.GetOrAdd(e.FullPath, new StreamReader(new FileStream(e.FullPath, FileMode.Open,FileAccess.Read,FileShare.ReadWrite), Encoding.UTF8));
@@ -71,9 +76,10 @@ public class FileUtil
             var data = reader.ReadLine();
             //var readLineAsync = reader.ReadLineAsync();
             //var data = readLineAsync.Result;
-            log.Info(e.Name + " ==>" + data +"\n");
+            Console.WriteLine(e.Name + " ==>" + data + "\n");
         }
-        //Console.WriteLine("修改：" + e.ChangeType + " " + e.FullPath + " " + e.Name);
+        Console.WriteLine("修改：" + e.ChangeType + " " + e.FullPath + " " + e.Name);
+        //AccessDbTest.SelectTop1();
     }
 
     /// <summary>
@@ -81,7 +87,7 @@ public class FileUtil
     /// </summary>
     /// <param name="filepath">路径</param>
     /// <returns>返回true为一个文件，返回false为一个文件夹</returns>
-    public static bool isFile(string filepath)
+    public static bool IsFile(string filepath)
     {
         var fi = new FileInfo(filepath);
         return (fi.Attributes & FileAttributes.Directory) == 0;

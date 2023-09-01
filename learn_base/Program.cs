@@ -79,13 +79,9 @@ foreach (var type in types)
 // Console.WriteLine(mqttCon.password);
 // Json.Convert(mqttCon);
 // Console.WriteLine(mqttCon.password);
-log.Info("start ===");
 //  lua功能
-// Console.WriteLine(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fff"));
-// var luaSource = "";
 var lua = Lua.InitLua();
 Lua.AddLib("sysLib", new DataToTargetLib());
-//lua["sysLib"] = new DataToTargetLib();
 lua.DoString("log.trace('trace file print ---')");
 lua.DoString("log.debug('debug file print ---')");
 lua.DoString("log.info('info  file print ---')");
@@ -97,16 +93,11 @@ lua.DoString("log.fatal('fatal file print ---')");
 // lua.DoString(@"import ('learn_base', 'learn_base.sysLib')");
 // lua.DoString(@"timeLib = TimeLib()");
 // lua.DoString(@"print(timeLib:Now())");
+//lua.DoFile(@"script\data_to_test.lua");
+
+Lua.AddFunc(new DataToTargetLib());
+Lua.InvokeFunc("DataToHttp", 10, "test data");
 lua.DoFile(@"script\data_to_test.lua");
-//lua.DoString(luaSource);
-// //var doFile = lua.DoFile("data_to_mqtt.lua");
-// //  静态方法一个一个注册，然后使用
-// //lua["Action"] = "我是字符串，冒牌的函数";
-//Lua.AddLib("DataToMqtt", typeof(DataToTargetLib).GetMethod("DataToMqtt"));
-//Lua.AddLib("Splits", typeof(DataToTargetLib).GetMethod("Splits"));
-//lua.DoFile("data_to_mqtt.lua");
-// //Lua.AddLib("DataToHttp", typeof(DataToTargetLib).GetMethod("DataToHttp"));
-// // Lua.InvokeFunc("DataToHttp", "1", "test data");
 
 // Lua.ValidateLua();
 
